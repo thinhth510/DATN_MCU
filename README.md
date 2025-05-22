@@ -1,5 +1,5 @@
 # MCU
-> Truyền tín hiệu UART dạng string  
+> Truyền tín hiệu UART dạng string, sử dụng 3 thư viện ADC, LPUART và clocks_and_modes tham khảo trong cookbook
 ## Về 2 button 
 ### 1.SW2 
 Bấm 1 lần SW2 truyền 1 string "stop", bấm 2 lần SW2 truyền 1 string "previous" 
