@@ -52,14 +52,15 @@ void LPIT0_init(void) {
 
 void PORT_init(void) {
     PCC->PCCn[PCC_PORTC_INDEX] |= PCC_PCCn_CGC_MASK; /* Enable clock for PORTC */
-    PORTC->PCR[SW2] = PORT_PCR_MUX(1)
-    				| PORT_PCR_IRQC(9)
-					| PORT_PCR_PE_MASK
-					| PORT_PCR_PS_MASK; /* SW2 */
-    PORTC->PCR[SW3] = PORT_PCR_MUX(1)
-    				| PORT_PCR_IRQC(9)
-					| PORT_PCR_PE_MASK
-					| PORT_PCR_PS_MASK; /* SW3 */
+
+	// Configure PORTC Pin 12 (SW2) as GPIO with interrupt
+	PORTC->PCR[SW2] = PORT_PCR_MUX(1)       // Set MUX to GPIO
+					| PORT_PCR_IRQC(9);   // Enable interrupt on rising edge
+
+	// Configure PORTC Pin 13 (SW3) as GPIO with interrupt
+	PORTC->PCR[SW3] = PORT_PCR_MUX(1)       // Set MUX to GPIO
+					| PORT_PCR_IRQC(9);   // Enable interrupt on rising edge
+
 
     PORTC->PCR[6] |= PORT_PCR_MUX(2); /* UART1 RX */
     PORTC->PCR[7] |= PORT_PCR_MUX(2); /* UART1 TX */
